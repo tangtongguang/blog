@@ -15,5 +15,8 @@ $input = $request->get('name','World');
 //$response->send();
 ?>
 
-Hello <?php echo htmlspecialchars($input,ENT_QUOTES,'UTF-8');
+Hello <?php
+
+//echo htmlspecialchars($input,ENT_QUOTES,'UTF-8');
+echo htmlspecialchars(isset($name) ? $name : 'World',ENT_QUOTES,'UTF-8')
 ?>
