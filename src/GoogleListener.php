@@ -1,7 +1,9 @@
 <?php
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
 require_once __DIR__.'/ResponseEvent.php';
 
-class GoogleListener{
+class GoogleListener implements EventSubscriberInterface{
   public function onResponse(ResponseEvent $event){
     $response = $event->getResponse();
 
@@ -13,6 +15,10 @@ class GoogleListener{
       }
 
       $response->setContent($response->getContent().' GA code');
+  }
+
+  public static function getSubscribedEvents(){
+    return array('response'=>'onResponse');
   }
 }
  ?>

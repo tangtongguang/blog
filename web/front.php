@@ -48,8 +48,8 @@ try{
 // dispatch a response event
 $dispatcher = new EventDispatcher();
 
-$dispatcher->addListener('response',array(new GoogleListener(),'onResponse'));
-
+//$dispatcher->addListener('response',array(new GoogleListener(),'onResponse'));
+$dispatcher->addSubscriber(new GoogleListener());
 $dispatcher->dispatch('response',new ResponseEvent($response,$request));
 
 $response->send();
